@@ -1,0 +1,172 @@
+<div class="sidebar-wrap">
+
+  <!-- Workspace header -->
+  <div class="workspace-header">
+    <span class="workspace-icon">📝</span>
+    <span class="workspace-name">My Notes</span>
+    <button class="icon-btn theme-btn" (click)="theme.toggle()" [title]="theme.label">
+      {{ theme.icon }}
+    </button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <div class="search-inner">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Search pages…"
+        [ngModel]="searchQuery"
+        (ngModelChange)="onSearch($event)"
+      />
+    </div>
+  </div>
+
+  <div class="sidebar-scroll">
+
+    <!-- Search results -->
+    <ng-container *ngIf="isSearching">
+      <div class="section-label">Results</div>
+      <div *ngIf="searchResults.length === 0" class="empty-hint">No pages found</div>
+      <div
+        *ngFor="let page of searchResults"
+        class="flat-item"
+        [class.selected]="page._id === selectedPageId"
+        (click)="selectPage(page)"
+      >
+        <span class="flat-icon">{{ page.icon || '📄' }}</span>
+        <span class="flat-title">{{ page.title || 'Untitled' }}</span>
+        <span *ngIf="page.folderId && foldersById[page.folderId]" class="flat-badge folder-badge-flat">
+          📁 {{ foldersById[page.folderId] }}
+        </span>
+      </div>
+    </ng-container>
+
+    <!-- Pinned / Favorites -->
+    <ng-container *ngIf="!isSearching && pinnedPages.length > 0">
+      <div class="section-label">Favorites</div>
+      <div
+        *ngFor="let page of pinnedPages"
+        class="flat-item"
+        [class.selected]="page._id === selectedPageId"
+        (click)="selectPage(page)"
+      >
+        <span class="flat-icon">⭐</span>
+        <span class="flat-title">{{ page.title || 'Untitled' }}</span>
+        <span *ngIf="page.folderId && foldersById[page.folderId]" class="flat-badge folder-badge-flat">
+          📁 {{ foldersById[page.folderId] }}
+        </span>
+        <button class="unpin-btn" title="Unpin" (click)="unpinPage(page, $event)">×</button>
+      </div>
+    </ng-container>
+
+    <!-- Folders -->
+    <ng-container *ngIf="!isSearching">
+      <div class="section-label-row">
+        <span class="section-label">Folders</span>
+        <button class="section-add-btn" title="New folder" (click)="startCreateFolder()">+</button>
+      </div>
+
+      <!-- New folder input -->
+      <div *ngIf="creatingFolder" class="new-folder-row">
+        <span class="flat-icon">📁</span>
+        <input
+          #folderNameInput
+          class="folder-create-input"
+          [(ngModel)]="newFolderName"
+          placeholder="Folder name"
+          (keydown.enter)="commitCreateFolder()"
+          (keydown.escape)="cancelCreateFolder()"
+          (blur)="commitCreateFolder()"
+        />
+      </div>
+
+      <div *ngIf="folderTree.length === 0 && !creatingFolder" class="empty-hint">
+        No folders yet
+      </div>
+
+      <ng-container *ngFor="let folder of folderTree">
+        <div
+          class="folder-row"
+          [class.drag-over]="dragOverFolderId === folder._id"
+          (click)="toggleFolder(folder._id!)"
+          (dragover)="onDragOverFolder($event, folder._id!)"
+          (dragleave)="onDragLeaveFolder()"
+          (drop)="dropOnFolder($event, folder._id!)"
+        >
+          <span class="chevron" [class.expanded]="expandedFolders.has(folder._id!)">▶</span>
+          <span class="folder-icon">📁</span>
+          <span class="folder-name" *ngIf="renamingFolderId !== folder._id">{{ folder.name }}</span>
+          <input
+            *ngIf="renamingFolderId === folder._id"
+            class="folder-rename-input"
+            [(ngModel)]="renameFolderValue"
+            (keydown.enter)="commitRenameFolder(folder._id!)"
+            (keydown.escape)="cancelRenameFolder()"
+            (blur)="commitRenameFolder(folder._id!)"
+            (click)="$event.stopPropagation()"
+          />
+          <div class="folder-actions">
+            <button class="action-btn" title="Add page" (click)="$event.stopPropagation(); createPageInFolder(folder._id!)">+</button>
+            <button class="action-btn" title="Rename" (click)="startRenameFolder(folder, $event)">✏️</button>
+            <button class="action-btn action-btn--danger" title="Delete folder" (click)="deleteFolder(folder._id!, $event)">🗑️</button>
+          </div>
+        </div>
+
+        <!-- Pages inside folder -->
+        <ng-container *ngIf="expandedFolders.has(folder._id!)">
+          <div *ngIf="!folderPages[folder._id!] || folderPages[folder._id!].length === 0" class="empty-hint folder-empty">
+            Drop a page here or click + to add
+          </div>
+          <ng-container *ngFor="let page of folderPages[folder._id!]">
+            <app-sidebar-item
+              [page]="page"
+              [depth]="1"
+              [folderName]="folder.name"
+              [selectedPageId]="selectedPageId"
+              (pageSelected)="selectPage($event)"
+              (treeChanged)="loadFolderPages(folder._id!)"
+            ></app-sidebar-item>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- Page tree (unfiled) — drop zone for moving back to root -->
+    <ng-container *ngIf="!isSearching">
+      <div
+        class="section-label drop-target"
+        [class.drag-over]="dragOverRoot"
+        (dragover)="onDragOverRoot($event)"
+        (dragleave)="onDragLeaveRoot()"
+        (drop)="dropOnRoot($event)"
+      >Pages</div>
+      <div *ngIf="tree.length === 0" class="empty-hint">
+        No pages yet — create one below
+      </div>
+      <ng-container *ngFor="let page of tree">
+        <app-sidebar-item
+          [page]="page"
+          [depth]="0"
+          [selectedPageId]="selectedPageId"
+          (pageSelected)="selectPage($event)"
+          (treeChanged)="onTreeChanged()"
+        ></app-sidebar-item>
+      </ng-container>
+    </ng-container>
+
+  </div>
+
+  <!-- Add page button -->
+  <button class="add-page-btn" (click)="createRootPage()">
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+      <path d="M7.5 2v11M2 7.5h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    New page
+  </button>
+
+</div>

@@ -1,0 +1,119 @@
+<svg viewBox="0 0 1200 880" xmlns="http://www.w3.org/2000/svg" font-family="'Comic Sans MS', 'Segoe Print', 'Bradley Hand', cursive">
+  <defs>
+    <marker id="arr-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#1e1e1e"/></marker>
+    <marker id="arr-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4a9eed"/></marker>
+    <marker id="arr-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/></marker>
+    <marker id="arr-purple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#8b5cf6"/></marker>
+  </defs>
+  <rect width="1200" height="880" fill="#ffffff"/>
+
+  <text x="600" y="48" font-size="32" font-weight="bold" text-anchor="middle" fill="#1e1e1e">User &amp; Data Flow</text>
+  <text x="600" y="78" font-size="18" text-anchor="middle" fill="#757575">Note creation, auto-save, and AI inference flows</text>
+
+  <!-- Swim lanes -->
+  <rect x="30" y="110" width="140" height="730" fill="#fff3bf" fill-opacity="0.4" stroke="#f59e0b" stroke-width="1" rx="8"/>
+  <text x="100" y="140" font-size="18" font-weight="bold" text-anchor="middle" fill="#92400e">USER</text>
+
+  <rect x="190" y="110" width="260" height="730" fill="#dbe4ff" fill-opacity="0.4" stroke="#4a9eed" stroke-width="1" rx="8"/>
+  <text x="320" y="140" font-size="18" font-weight="bold" text-anchor="middle" fill="#2563eb">FRONTEND</text>
+
+  <rect x="470" y="110" width="260" height="730" fill="#e5dbff" fill-opacity="0.4" stroke="#8b5cf6" stroke-width="1" rx="8"/>
+  <text x="600" y="140" font-size="18" font-weight="bold" text-anchor="middle" fill="#6d28d9">BACKEND</text>
+
+  <rect x="750" y="110" width="200" height="730" fill="#d3f9d8" fill-opacity="0.4" stroke="#22c55e" stroke-width="1" rx="8"/>
+  <text x="850" y="140" font-size="18" font-weight="bold" text-anchor="middle" fill="#15803d">MONGODB</text>
+
+  <rect x="970" y="110" width="200" height="730" fill="#e5dbff" fill-opacity="0.4" stroke="#8b5cf6" stroke-width="1" rx="8"/>
+  <text x="1070" y="140" font-size="18" font-weight="bold" text-anchor="middle" fill="#6d28d9">LLM API</text>
+
+  <!-- Flow 1: Auto-save -->
+  <ellipse cx="100" cy="180" rx="60" ry="22" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
+  <text x="100" y="187" font-size="16" font-weight="bold" text-anchor="middle" fill="#fff">Flow 1</text>
+  <text x="100" y="220" font-size="12" text-anchor="middle" fill="#92400e">Auto-Save</text>
+
+  <rect x="50" y="240" width="100" height="50" fill="#ffd8a8" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="100" y="270" font-size="13" text-anchor="middle" fill="#1e1e1e">Type note</text>
+
+  <line x1="150" y1="265" x2="200" y2="265" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arr-black)"/>
+
+  <rect x="210" y="240" width="220" height="50" fill="#a5d8ff" stroke="#2563eb" stroke-width="2" rx="6"/>
+  <text x="320" y="270" font-size="13" text-anchor="middle" fill="#1e1e1e">Update editor state</text>
+
+  <line x1="320" y1="290" x2="320" y2="310" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arr-black)"/>
+
+  <rect x="210" y="310" width="220" height="50" fill="#a5d8ff" stroke="#2563eb" stroke-width="2" rx="6"/>
+  <text x="320" y="340" font-size="13" text-anchor="middle" fill="#1e1e1e">Debounce 1s on blur</text>
+
+  <line x1="430" y1="335" x2="490" y2="335" stroke="#4a9eed" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <text x="460" y="328" font-size="12" text-anchor="middle" fill="#2563eb" font-weight="bold">PUT</text>
+
+  <rect x="490" y="310" width="220" height="50" fill="#d0bfff" stroke="#6d28d9" stroke-width="2" rx="6"/>
+  <text x="600" y="340" font-size="13" text-anchor="middle" fill="#1e1e1e">/api/notes/:id</text>
+
+  <line x1="710" y1="335" x2="760" y2="335" stroke="#22c55e" stroke-width="2" marker-end="url(#arr-green)"/>
+  <text x="735" y="328" font-size="12" text-anchor="middle" fill="#15803d" font-weight="bold">save</text>
+
+  <rect x="760" y="310" width="180" height="50" fill="#b2f2bb" stroke="#15803d" stroke-width="2" rx="6"/>
+  <text x="850" y="340" font-size="13" text-anchor="middle" fill="#1e1e1e">Update notes doc</text>
+
+  <line x1="760" y1="375" x2="710" y2="375" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-green)"/>
+  <text x="735" y="392" font-size="11" text-anchor="middle" fill="#15803d">ack</text>
+
+  <line x1="490" y1="375" x2="430" y2="375" stroke="#4a9eed" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-blue)"/>
+  <text x="460" y="392" font-size="11" text-anchor="middle" fill="#2563eb">200 OK</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="430" x2="1160" y2="430" stroke="#999" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- Flow 2: AI Summarize -->
+  <ellipse cx="100" cy="465" rx="60" ry="22" fill="#8b5cf6" stroke="#5b21b6" stroke-width="2"/>
+  <text x="100" y="472" font-size="16" font-weight="bold" text-anchor="middle" fill="#fff">Flow 2</text>
+  <text x="100" y="505" font-size="12" text-anchor="middle" fill="#6d28d9">AI Summarize</text>
+
+  <rect x="50" y="525" width="100" height="50" fill="#ffd8a8" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="100" y="548" font-size="12" text-anchor="middle" fill="#1e1e1e">Click</text>
+  <text x="100" y="565" font-size="12" text-anchor="middle" fill="#1e1e1e">"Summarize"</text>
+
+  <line x1="150" y1="550" x2="200" y2="550" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arr-black)"/>
+
+  <rect x="210" y="525" width="220" height="50" fill="#a5d8ff" stroke="#2563eb" stroke-width="2" rx="6"/>
+  <text x="320" y="555" font-size="13" text-anchor="middle" fill="#1e1e1e">AiService.summarize()</text>
+
+  <line x1="430" y1="550" x2="490" y2="550" stroke="#4a9eed" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <text x="460" y="543" font-size="12" text-anchor="middle" fill="#2563eb" font-weight="bold">POST</text>
+
+  <rect x="490" y="525" width="220" height="50" fill="#d0bfff" stroke="#6d28d9" stroke-width="2" rx="6"/>
+  <text x="600" y="555" font-size="13" text-anchor="middle" fill="#1e1e1e">/api/ai/summarize</text>
+
+  <line x1="600" y1="575" x2="600" y2="600" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arr-black)"/>
+
+  <rect x="490" y="600" width="220" height="60" fill="#d0bfff" stroke="#6d28d9" stroke-width="2" rx="6"/>
+  <text x="600" y="625" font-size="13" text-anchor="middle" fill="#1e1e1e">LlmService.complete()</text>
+  <text x="600" y="645" font-size="11" text-anchor="middle" fill="#666">build prompt + call SDK</text>
+
+  <line x1="710" y1="630" x2="990" y2="630" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arr-purple)"/>
+  <text x="850" y="620" font-size="12" text-anchor="middle" fill="#6d28d9" font-weight="bold">HTTPS request</text>
+
+  <rect x="995" y="605" width="150" height="55" fill="#d0bfff" stroke="#6d28d9" stroke-width="2" rx="6"/>
+  <text x="1070" y="630" font-size="12" text-anchor="middle" fill="#1e1e1e">Chat completion</text>
+  <text x="1070" y="650" font-size="12" text-anchor="middle" fill="#1e1e1e">(LLM provider)</text>
+
+  <line x1="995" y1="685" x2="710" y2="685" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arr-purple)"/>
+  <text x="850" y="678" font-size="12" text-anchor="middle" fill="#6d28d9" font-weight="bold">summary text</text>
+
+  <line x1="490" y1="700" x2="430" y2="700" stroke="#4a9eed" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arr-blue)"/>
+  <text x="460" y="693" font-size="11" text-anchor="middle" fill="#2563eb">200 OK</text>
+
+  <rect x="490" y="685" width="220" height="40" fill="#d0bfff" stroke="#6d28d9" stroke-width="2" rx="6"/>
+  <text x="600" y="710" font-size="12" text-anchor="middle" fill="#1e1e1e">parse + return JSON</text>
+
+  <rect x="210" y="725" width="220" height="50" fill="#a5d8ff" stroke="#2563eb" stroke-width="2" rx="6"/>
+  <text x="320" y="755" font-size="13" text-anchor="middle" fill="#1e1e1e">Display in AI Panel</text>
+
+  <line x1="320" y1="775" x2="320" y2="800" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr-black)"/>
+
+  <rect x="50" y="800" width="100" height="40" fill="#b2f2bb" stroke="#15803d" stroke-width="2" rx="6"/>
+  <text x="100" y="825" font-size="13" text-anchor="middle" fill="#1e1e1e">Read summary</text>
+
+  <line x1="210" y1="820" x2="160" y2="820" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr-black)"/>
+</svg>

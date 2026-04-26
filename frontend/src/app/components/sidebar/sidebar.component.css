@@ -1,0 +1,341 @@
+.sidebar-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 240px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* ─── Workspace header ───────────────────────────────────────────── */
+.workspace-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 10px 10px 14px;
+  flex-shrink: 0;
+}
+
+.workspace-icon {
+  font-size: 17px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.workspace-name {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.icon-btn {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  padding: 0;
+}
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+}
+
+.theme-btn {
+  font-size: 15px;
+  font-style: normal;
+  width: 28px;
+  height: 28px;
+}
+
+/* ─── Search ─────────────────────────────────────────────────────── */
+.search-wrap {
+  padding: 0 8px 8px;
+  flex-shrink: 0;
+}
+
+.search-inner {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--bg-hover);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  transition: box-shadow 80ms ease;
+}
+
+.search-inner:focus-within {
+  box-shadow: 0 0 0 2px var(--accent);
+  background: var(--bg-primary);
+}
+
+.search-icon {
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-primary);
+  padding: 0;
+}
+.search-input::placeholder { color: var(--text-tertiary); }
+
+/* ─── Scrollable tree ────────────────────────────────────────────── */
+.sidebar-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2px 6px 8px;
+}
+
+/* ─── Section labels ─────────────────────────────────────────────── */
+.section-label {
+  padding: 10px 8px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  user-select: none;
+}
+
+.section-label-row {
+  display: flex;
+  align-items: center;
+  padding-right: 6px;
+}
+.section-label-row .section-label {
+  flex: 1;
+}
+.section-add-btn {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  border-radius: 4px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 6px;
+  padding: 0;
+}
+.section-add-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+/* ─── Folder rows ────────────────────────────────────────────────── */
+.folder-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-primary);
+  height: 30px;
+  transition: background 80ms ease;
+  position: relative;
+}
+.folder-row:hover { background: var(--bg-hover); }
+
+.folder-row .chevron {
+  font-size: 8px;
+  display: inline-block;
+  transition: transform 120ms ease;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  width: 12px;
+}
+.folder-row .chevron.expanded { transform: rotate(90deg); }
+
+.folder-icon { font-size: 15px; flex-shrink: 0; }
+
+.folder-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.folder-rename-input {
+  flex: 1;
+  font-size: 14px;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  padding: 2px 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.folder-actions {
+  display: flex;
+  gap: 1px;
+  margin-left: auto;
+  opacity: 0;
+  flex-shrink: 0;
+  transition: opacity 80ms ease;
+}
+.folder-row:hover .folder-actions { opacity: 1; }
+
+.action-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.action-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.action-btn--danger:hover { color: var(--danger); }
+
+/* ─── New folder input row ───────────────────────────────────────── */
+.new-folder-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  height: 30px;
+}
+
+.folder-create-input {
+  flex: 1;
+  font-size: 14px;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  padding: 2px 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.folder-empty { padding-left: 28px; }
+
+/* Drag-over highlights */
+.folder-row.drag-over {
+  background: var(--accent-bg);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-sm);
+}
+.section-label.drop-target { border-radius: var(--radius-sm); transition: background 80ms ease; }
+.section-label.drop-target.drag-over {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+/* ─── Flat items (search results / pinned) ───────────────────────── */
+.flat-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: background 80ms ease;
+}
+.flat-item:hover { background: var(--bg-hover); }
+.flat-item.selected {
+  background: var(--bg-selected);
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.flat-icon { font-size: 14px; flex-shrink: 0; }
+.flat-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flat-badge {
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 1px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.folder-badge-flat {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.unpin-btn {
+  opacity: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 2px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  transition: opacity 80ms ease, color 80ms ease;
+}
+.flat-item:hover .unpin-btn { opacity: 1; }
+.unpin-btn:hover { color: var(--danger); }
+
+/* ─── Empty hint ─────────────────────────────────────────────────── */
+.empty-hint {
+  padding: 6px 8px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* ─── Add page button ────────────────────────────────────────────── */
+.add-page-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  flex-shrink: 0;
+  transition: background 80ms ease, color 80ms ease;
+}
+.add-page-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.add-page-btn svg { flex-shrink: 0; }

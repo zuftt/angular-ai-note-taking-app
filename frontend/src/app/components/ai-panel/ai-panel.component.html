@@ -1,0 +1,60 @@
+<div class="panel-shell">
+  <!-- Header -->
+  <div class="panel-header">
+    <span class="panel-title">✦ AI Assistant</span>
+    <button class="close-btn" (click)="close.emit()" title="Close">✕</button>
+  </div>
+
+  <!-- No page selected -->
+  <div *ngIf="!page" class="no-page">
+    Open a page to use AI features.
+  </div>
+
+  <!-- Actions -->
+  <div *ngIf="page" class="panel-actions">
+    <button
+      class="action-card"
+      [disabled]="isLoading || !page.content"
+      (click)="summarize()"
+    >
+      <span class="action-icon">✨</span>
+      <span class="action-label">Summarize note</span>
+    </button>
+    <button
+      class="action-card"
+      [disabled]="isLoading || !page.content"
+      (click)="generateTags()"
+    >
+      <span class="action-icon">🏷️</span>
+      <span class="action-label">Generate tags</span>
+    </button>
+  </div>
+
+  <!-- Messages -->
+  <div *ngIf="page" class="messages">
+    <div *ngIf="messages.length === 0" class="messages-empty">
+      Responses will appear here.
+    </div>
+    <div *ngFor="let msg of messages" class="message" [class.user]="msg.role === 'user'">
+      {{ msg.content }}
+    </div>
+    <div *ngIf="isLoading" class="message loading">Thinking…</div>
+  </div>
+
+  <!-- Chat input -->
+  <div *ngIf="page" class="chat-input-row">
+    <input
+      [(ngModel)]="userQuestion"
+      (keydown.enter)="askQuestion()"
+      [disabled]="isLoading"
+      type="text"
+      placeholder="Ask about this page…"
+      class="chat-input"
+    />
+    <button
+      class="send-btn"
+      [disabled]="isLoading || !userQuestion.trim()"
+      (click)="askQuestion()"
+    >↑</button>
+  </div>
+</div>

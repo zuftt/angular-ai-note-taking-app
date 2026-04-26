@@ -1,0 +1,120 @@
+<svg viewBox="0 0 1200 880" xmlns="http://www.w3.org/2000/svg" font-family="'Comic Sans MS', 'Segoe Print', 'Bradley Hand', cursive">
+  <defs>
+    <marker id="arr-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#1e1e1e"/></marker>
+    <marker id="arr-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4a9eed"/></marker>
+    <marker id="arr-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/></marker>
+    <marker id="arr-purple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#8b5cf6"/></marker>
+  </defs>
+  <rect width="1200" height="880" fill="#ffffff"/>
+
+  <text x="600" y="48" font-size="32" font-weight="bold" text-anchor="middle" fill="#1e1e1e">System Architecture</text>
+  <text x="600" y="78" font-size="18" text-anchor="middle" fill="#757575">AI Note-Taking App — MEAN Stack</text>
+
+  <rect x="40" y="120" width="280" height="60" fill="#fff3bf" stroke="#f59e0b" stroke-width="2" rx="8"/>
+  <text x="180" y="158" font-size="20" text-anchor="middle" fill="#1e1e1e">Browser (Client)</text>
+
+  <line x1="180" y1="180" x2="180" y2="220" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arr-black)"/>
+
+  <!-- Frontend zone -->
+  <rect x="20" y="230" width="320" height="430" fill="#dbe4ff" fill-opacity="0.4" stroke="#4a9eed" stroke-width="2" rx="8"/>
+  <text x="40" y="265" font-size="22" font-weight="bold" fill="#2563eb">Frontend — Angular 17</text>
+  <text x="40" y="288" font-size="14" fill="#666">http://localhost:4200</text>
+
+  <rect x="50" y="310" width="130" height="80" fill="#a5d8ff" stroke="#2563eb" stroke-width="2" rx="6"/>
+  <text x="115" y="345" font-size="15" text-anchor="middle" fill="#1e1e1e">Sidebar</text>
+  <text x="115" y="365" font-size="15" text-anchor="middle" fill="#1e1e1e">Folder Tree</text>
+
+  <rect x="190" y="310" width="130" height="80" fill="#a5d8ff" stroke="#2563eb" stroke-width="2" rx="6"/>
+  <text x="255" y="345" font-size="15" text-anchor="middle" fill="#1e1e1e">Note Editor</text>
+  <text x="255" y="365" font-size="15" text-anchor="middle" fill="#1e1e1e">Auto-save</text>
+
+  <rect x="50" y="405" width="130" height="80" fill="#a5d8ff" stroke="#2563eb" stroke-width="2" rx="6"/>
+  <text x="115" y="440" font-size="15" text-anchor="middle" fill="#1e1e1e">AI Panel</text>
+  <text x="115" y="460" font-size="15" text-anchor="middle" fill="#1e1e1e">Summary/Tags</text>
+
+  <rect x="190" y="405" width="130" height="80" fill="#a5d8ff" stroke="#2563eb" stroke-width="2" rx="6"/>
+  <text x="255" y="440" font-size="15" text-anchor="middle" fill="#1e1e1e">Search</text>
+  <text x="255" y="460" font-size="15" text-anchor="middle" fill="#1e1e1e">Full-text</text>
+
+  <rect x="50" y="505" width="270" height="120" fill="#fff3bf" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="185" y="535" font-size="15" font-weight="bold" text-anchor="middle" fill="#1e1e1e">Services</text>
+  <text x="185" y="560" font-size="14" text-anchor="middle" fill="#1e1e1e">NoteService</text>
+  <text x="185" y="582" font-size="14" text-anchor="middle" fill="#1e1e1e">FolderService</text>
+  <text x="185" y="604" font-size="14" text-anchor="middle" fill="#1e1e1e">AiService</text>
+
+  <!-- Backend zone -->
+  <rect x="440" y="230" width="320" height="510" fill="#e5dbff" fill-opacity="0.4" stroke="#8b5cf6" stroke-width="2" rx="8"/>
+  <text x="460" y="265" font-size="22" font-weight="bold" fill="#6d28d9">Backend — Express.js</text>
+  <text x="460" y="288" font-size="14" fill="#666">http://localhost:3000</text>
+
+  <rect x="470" y="310" width="260" height="60" fill="#d0bfff" stroke="#6d28d9" stroke-width="2" rx="6"/>
+  <text x="600" y="346" font-size="15" text-anchor="middle" fill="#1e1e1e">Middleware (CORS, JSON)</text>
+
+  <rect x="470" y="390" width="260" height="55" fill="#ffd8a8" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="600" y="423" font-size="15" text-anchor="middle" fill="#1e1e1e">/api/notes  (CRUD + Search)</text>
+
+  <rect x="470" y="460" width="260" height="55" fill="#ffd8a8" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="600" y="493" font-size="15" text-anchor="middle" fill="#1e1e1e">/api/folders  (Tree + CRUD)</text>
+
+  <rect x="470" y="530" width="260" height="55" fill="#ffd8a8" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="600" y="563" font-size="15" text-anchor="middle" fill="#1e1e1e">/api/ai  (Summarize/Tags/QA)</text>
+
+  <rect x="470" y="600" width="125" height="120" fill="#b2f2bb" stroke="#22c55e" stroke-width="2" rx="6"/>
+  <text x="532" y="640" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1e1e">Mongoose</text>
+  <text x="532" y="662" font-size="13" text-anchor="middle" fill="#1e1e1e">Models</text>
+  <text x="532" y="690" font-size="12" text-anchor="middle" fill="#666">Note • Folder</text>
+
+  <rect x="605" y="600" width="125" height="120" fill="#d0bfff" stroke="#6d28d9" stroke-width="2" rx="6"/>
+  <text x="667" y="640" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1e1e">LlmService</text>
+  <text x="667" y="668" font-size="12" text-anchor="middle" fill="#1e1e1e">SDK wrapper</text>
+  <text x="667" y="690" font-size="12" text-anchor="middle" fill="#666">prompt + parse</text>
+
+  <!-- Database zone -->
+  <rect x="860" y="230" width="300" height="240" fill="#d3f9d8" fill-opacity="0.4" stroke="#22c55e" stroke-width="2" rx="8"/>
+  <text x="880" y="265" font-size="22" font-weight="bold" fill="#15803d">MongoDB 7</text>
+  <text x="880" y="288" font-size="14" fill="#666">mongodb://localhost:27017</text>
+
+  <ellipse cx="1010" cy="340" rx="120" ry="32" fill="#b2f2bb" stroke="#15803d" stroke-width="2"/>
+  <text x="1010" y="338" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1e1e">notes</text>
+  <text x="1010" y="356" font-size="12" text-anchor="middle" fill="#1e1e1e">{title, content, folderId, tags}</text>
+
+  <ellipse cx="1010" cy="410" rx="120" ry="32" fill="#b2f2bb" stroke="#15803d" stroke-width="2"/>
+  <text x="1010" y="408" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1e1e">folders</text>
+  <text x="1010" y="426" font-size="12" text-anchor="middle" fill="#1e1e1e">{name, parentId} + indexes</text>
+
+  <!-- LLM Provider zone -->
+  <rect x="860" y="500" width="300" height="240" fill="#e5dbff" fill-opacity="0.4" stroke="#8b5cf6" stroke-width="2" rx="8"/>
+  <text x="880" y="535" font-size="22" font-weight="bold" fill="#6d28d9">LLM API (External)</text>
+  <text x="880" y="558" font-size="14" fill="#666">e.g. OpenAI / Anthropic</text>
+
+  <rect x="890" y="585" width="240" height="60" fill="#d0bfff" stroke="#6d28d9" stroke-width="2" rx="6"/>
+  <text x="1010" y="612" font-size="15" font-weight="bold" text-anchor="middle" fill="#1e1e1e">Chat Completions</text>
+  <text x="1010" y="632" font-size="12" text-anchor="middle" fill="#1e1e1e">summarize • tag • answer</text>
+
+  <rect x="890" y="660" width="240" height="55" fill="#fff3bf" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="1010" y="687" font-size="13" text-anchor="middle" fill="#1e1e1e">API Key (env var)</text>
+  <text x="1010" y="705" font-size="12" text-anchor="middle" fill="#666">LLM_API_KEY</text>
+
+  <!-- Arrows: FE <-> BE -->
+  <line x1="340" y1="420" x2="440" y2="420" stroke="#4a9eed" stroke-width="3" marker-end="url(#arr-blue)"/>
+  <text x="390" y="410" font-size="14" text-anchor="middle" fill="#2563eb" font-weight="bold">HTTP/REST</text>
+  <line x1="440" y1="460" x2="340" y2="460" stroke="#4a9eed" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arr-blue)"/>
+  <text x="390" y="478" font-size="14" text-anchor="middle" fill="#2563eb">JSON</text>
+
+  <!-- Arrows: BE <-> DB -->
+  <line x1="760" y1="380" x2="860" y2="380" stroke="#22c55e" stroke-width="3" marker-end="url(#arr-green)"/>
+  <text x="810" y="370" font-size="14" text-anchor="middle" fill="#15803d" font-weight="bold">Mongoose</text>
+  <line x1="860" y1="420" x2="760" y2="420" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arr-green)"/>
+  <text x="810" y="438" font-size="14" text-anchor="middle" fill="#15803d">BSON</text>
+
+  <!-- Arrows: BE <-> LLM API -->
+  <line x1="760" y1="630" x2="860" y2="630" stroke="#8b5cf6" stroke-width="3" marker-end="url(#arr-purple)"/>
+  <text x="810" y="620" font-size="14" text-anchor="middle" fill="#6d28d9" font-weight="bold">HTTPS</text>
+  <line x1="860" y1="670" x2="760" y2="670" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arr-purple)"/>
+  <text x="810" y="688" font-size="14" text-anchor="middle" fill="#6d28d9">completion</text>
+
+  <!-- Footer -->
+  <rect x="40" y="780" width="1120" height="80" fill="#fff3bf" fill-opacity="0.5" stroke="#f59e0b" stroke-width="1" rx="8"/>
+  <text x="60" y="808" font-size="16" font-weight="bold" fill="#1e1e1e">Key Properties</text>
+  <text x="60" y="838" font-size="14" fill="#1e1e1e">• Backend handles all LLM calls   • API key stays server-side   • Auto-save on blur (1s debounce)   • Standard 3-tier MEAN architecture</text>
+</svg>

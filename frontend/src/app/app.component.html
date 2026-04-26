@@ -1,0 +1,34 @@
+<app-onboarding-modal
+  *ngIf="showOnboarding"
+  (closed)="showOnboarding = false"
+></app-onboarding-modal>
+
+<div class="app-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.sidebar--collapsed]="!sidebarOpen">
+    <app-sidebar
+      [selectedPageId]="selectedPage?._id || null"
+      (pageSelected)="onPageSelected($event)"
+    ></app-sidebar>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <app-page-editor
+      [page]="selectedPage"
+      [sidebarOpen]="sidebarOpen"
+      [aiPanelOpen]="aiPanelOpen"
+      (pageUpdated)="onPageUpdated($event)"
+      (toggleSidebar)="toggleSidebar()"
+      (toggleAiPanel)="toggleAiPanel()"
+    ></app-page-editor>
+  </main>
+
+  <!-- AI Panel slide-out -->
+  <aside class="ai-panel" [class.ai-panel--open]="aiPanelOpen">
+    <app-ai-panel
+      [page]="selectedPage"
+      (close)="toggleAiPanel()"
+    ></app-ai-panel>
+  </aside>
+</div>

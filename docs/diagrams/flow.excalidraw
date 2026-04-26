@@ -1,0 +1,20 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"type":"text","id":"title","x":380,"y":20,"text":"User & Data Flow","fontSize":32,"strokeColor":"#1e1e1e"},
+    {"type":"text","id":"subtitle","x":340,"y":60,"text":"Note creation, auto-save, and AI inference flows","fontSize":18,"strokeColor":"#757575"},
+    {"type":"rectangle","id":"laneUser","x":30,"y":110,"width":140,"height":700,"backgroundColor":"#fff3bf","fillStyle":"solid","roundness":{"type":3},"strokeColor":"#f59e0b","strokeWidth":1,"opacity":40},
+    {"type":"text","id":"laneUserT","x":75,"y":125,"text":"USER","fontSize":18,"strokeColor":"#92400e"},
+    {"type":"rectangle","id":"laneFE","x":190,"y":110,"width":260,"height":700,"backgroundColor":"#dbe4ff","fillStyle":"solid","roundness":{"type":3},"strokeColor":"#4a9eed","strokeWidth":1,"opacity":40},
+    {"type":"text","id":"laneFET","x":280,"y":125,"text":"FRONTEND","fontSize":18,"strokeColor":"#2563eb"},
+    {"type":"rectangle","id":"laneBE","x":470,"y":110,"width":260,"height":700,"backgroundColor":"#e5dbff","fillStyle":"solid","roundness":{"type":3},"strokeColor":"#8b5cf6","strokeWidth":1,"opacity":40},
+    {"type":"text","id":"laneBET","x":560,"y":125,"text":"BACKEND","fontSize":18,"strokeColor":"#6d28d9"},
+    {"type":"rectangle","id":"laneDB","x":750,"y":110,"width":200,"height":700,"backgroundColor":"#d3f9d8","fillStyle":"solid","roundness":{"type":3},"strokeColor":"#22c55e","strokeWidth":1,"opacity":40},
+    {"type":"text","id":"laneDBT","x":810,"y":125,"text":"MONGODB","fontSize":18,"strokeColor":"#15803d"},
+    {"type":"rectangle","id":"laneAI","x":970,"y":110,"width":200,"height":700,"backgroundColor":"#e5dbff","fillStyle":"solid","roundness":{"type":3},"strokeColor":"#8b5cf6","strokeWidth":1,"opacity":40},
+    {"type":"text","id":"laneAIT","x":1020,"y":125,"text":"EDGE LLM","fontSize":18,"strokeColor":"#6d28d9"}
+  ],
+  "appState": {"viewBackgroundColor":"#ffffff"}
+}
