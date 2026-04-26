@@ -1,4 +1,4 @@
-# ✦ AI Note-Taking App
+# AI Note-Taking App (Angular, Express.js, Node.js, Mongo.db)
 
 A Notion-style note-taking app built with Angular 17 + Express + MongoDB, powered by AI via OpenRouter.
 
