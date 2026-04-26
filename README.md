@@ -6,6 +6,10 @@ A Notion-style note-taking app built with Angular 17 + Express + MongoDB, powere
 
 ## Demo
 
+
+https://github.com/user-attachments/assets/f1ddf018-28b7-4531-9cbb-9bab83c72ac1
+
+
 <video src="demo/output/demo.mp4" controls width="100%"></video>
 
 > *Creates a folder, writes a Markdown note, uses AI summarisation and Q&A, toggles preview.*
